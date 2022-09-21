@@ -25,7 +25,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+ $routes->setAutoRoute(false);
 
 /*
  * --------------------------------------------------------------------
@@ -35,7 +35,62 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+/*
+ * --------------------------------------------------------------------
+ * Auth
+ * --------------------------------------------------------------------
+ */
+$routes->get('logout', 'Auth::logout');
+$routes->get('login', 'Auth::get_login');
+$routes->post('login', 'Auth::login');
+$routes->get('remind_password', 'Auth::get_remind_password');
+$routes->post('remind_password', 'Auth::remind_password');
+$routes->get('set_new_password', 'Auth::get_set_new_password');
+$routes->post('set_new_password', 'Auth::set_new_password');
+$routes->get('change_password', 'Auth::get_change_password');
+$routes->post('change_password', 'Auth::change_password');
+/*
+ * --------------------------------------------------------------------
+ */
+
 $routes->get('/', 'Home::index');
+
+/*
+ * --------------------------------------------------------------------
+ * Admin Group
+ * --------------------------------------------------------------------
+ */
+$routes->group( 'admin', ['filter' => 'isAdmin'], function( $routes ){
+    $routes->get('', 'Admin\Orders::index');
+    $routes->get('orders', 'Admin\Orders::orders');
+    $routes->get('users', 'Admin\Users::index');
+});
+/*
+ * --------------------------------------------------------------------
+ */
+
+/*
+ * --------------------------------------------------------------------
+ * User
+ * --------------------------------------------------------------------
+ */
+$routes->group( '', ['filter' => 'isLogged'], function( $routes ){
+    $routes->get('', 'User\Desktop::index');
+});
+/*
+ * --------------------------------------------------------------------
+ */
+
+/*
+ * --------------------------------------------------------------------
+ * Tests
+ * --------------------------------------------------------------------
+ */
+$routes->get('/test/(:any)', 'Test::test_views/$1');
+/*
+ * --------------------------------------------------------------------
+ */
 
 /*
  * --------------------------------------------------------------------

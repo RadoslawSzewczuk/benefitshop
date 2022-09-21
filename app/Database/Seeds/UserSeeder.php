@@ -12,35 +12,35 @@ class UserSeeder extends Seeder
         $data = [
             [
                 'id'                => 1,
-                'email'             => 'r.szewczuk@gloo.pl',
+                'email'             => 'r.szewczuk@benefitshop.pl',
                 'password'          => password_hash( 'zxc', PASSWORD_DEFAULT ),
                 'rank'              => 1,
                 'erp'               => '1',
-                'company_name'      => 'Gloo Corp.'
+                'company_name'      => 'Benefitshop Corp.'
             ],
             [
                 'id'                => 2,
-                'email'             => 'kierownik_sektora@gloo.pl',
+                'email'             => 'kierownik_sektora@benefitshop.pl',
                 'password'          => password_hash( 'zxc', PASSWORD_DEFAULT ),
                 'rank'              => 2,
                 'erp'               => '2',
-                'company_name'      => 'Gloo Corp.'
+                'company_name'      => 'Benefitshop Corp.'
             ],
             [
                 'id'                => 3,
-                'email'             => 'kierownik_regionu@gloo.pl',
+                'email'             => 'kierownik_regionu@benefitshop.pl',
                 'password'          => password_hash( 'zxc', PASSWORD_DEFAULT ),
                 'rank'              => 3,
                 'erp'               => '3',
-                'company_name'      => 'Gloo Corp.'
+                'company_name'      => 'Benefitshop Corp.'
             ],
             [
                 'id'                => 4,
-                'email'             => 'dystrybutor@gloo.pl',
+                'email'             => 'dystrybutor@benefitshop.pl',
                 'password'          => password_hash( 'zxc', PASSWORD_DEFAULT ),
                 'rank'              => 4,
                 'erp'               => '4',
-                'company_name'      => 'Gloo Corp.'
+                'company_name'      => 'Benefitshop Corp.'
             ]
         ];
 
