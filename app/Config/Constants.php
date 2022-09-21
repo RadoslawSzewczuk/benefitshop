@@ -92,3 +92,23 @@ define('EVENT_PRIORITY_NORMAL', 100);
  * @deprecated Use \CodeIgniter\Events\Events::PRIORITY_HIGH instead.
  */
 define('EVENT_PRIORITY_HIGH', 10);
+
+/**
+ * SESSION
+ */
+defined('SESSION_LONG') || define('SESSION_LONG', 2592000);
+defined('SESSION_SHORT') || define('SESSION_SHORT', 7200);
+
+/**
+ * RANKS
+ */
+defined('ADMIN_RANK_ID') || define('ADMIN_RANK_ID', 1);
+defined('SECTOR_MANAGER_RANK_ID') || define('SECTOR_MANAGER_RANK_ID', 2);
+defined('REGION_MANAGER_RANK_ID') || define('REGION_MANAGER_RANK_ID', 3);
+defined('DISTRIBUTOR_RANK_ID') || define('DISTRIBUTOR_RANK_ID', 4);
+
+/**
+ * OTHER
+ */
+defined('SCRIPT_EXCLUDED_ROUTES') || define('SCRIPT_EXCLUDED_ROUTES', []);
+defined('ADMIN_EMAIL') || define('ADMIN_EMAIL', 'radek.szewczuk@gmail.com');
