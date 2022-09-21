@@ -1,3 +1,40 @@
+## INSTRUKCJA URUCHOMIENIA
+
+Wymagania:
+``````
+* php 8.1
+* composer
+* standardowe wyagania ci4:
+    Following extensions installed:
+        intl
+        libcurl if you plan to use the HTTP\CURLRequest library
+    
+    Additionally, make sure that the following extensions are enabled in your PHP:
+        json (enabled by default - don't turn it off)
+        mbstring
+        mysqlnd
+        xml (enabled by default - don't turn it off)
+``````
+
+1. Stwórz w głównym katalogu plik '.env'
+````
+cp env .env
+````
+2. Uzupełnij w nim dane do bazy
+3. Uruchoom następujące komendy:
+````
+composer update
+````
+
+````
+php spark migrate
+````
+
+````
+php spark db:seed BaseSeeder
+````
+
+---
 # CodeIgniter 4 Application Starter
 
 ## What is CodeIgniter?
