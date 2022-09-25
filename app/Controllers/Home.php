@@ -6,9 +6,9 @@ class Home extends BaseController
 {
     public function index()
     {
-        if( !isLoggedIn() )
+        if ( !isLoggedIn() )
             return redirect()->to( base_url('login') );
 
-        return redirect()->to( isAdmin() ? base_url('admin') : base_url() );
+        return redirect()->to( isAdmin() ? base_url('admin/users') : base_url() );
     }
 }

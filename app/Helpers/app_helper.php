@@ -1,6 +1,6 @@
 <?php
 
-if ( !function_exists('get_table_params') ) {
+if ( !function_exists('get_table_params') ) :
     function get_table_params( CodeIgniter\HTTP\CLIRequest|CodeIgniter\HTTP\IncomingRequest $request ): array
     {
         return [
@@ -9,24 +9,18 @@ if ( !function_exists('get_table_params') ) {
             empty($request->getGet('reversed')) ? 'ASC' : 'DESC',
         ];
     }
-}
+endif;
 
-if ( !function_exists('prepare_table_params') ) {
-    function prepare_table_params( string $searchValue, array $list, \CodeIgniter\Pager\Pager $pager ): array
+if ( !function_exists('prepare_table_params') ) :
+    function prepare_table_params( string $searchValue, string $headers_template, array $list, \CodeIgniter\Pager\Pager $pager ): array
     {
+        helper('table_headers/' . $headers_template );
+
         return [
             'search_value'      => $searchValue,
             'pager'             => $pager,
-            'data'              => $list,
-            'headers'           => [
-                [ 'title' => 'ID', 'sortable' => true, 'mapped_field' => 'id', ],
-                [ 'title' => 'E-mail', 'sortable' => true, 'mapped_field' => 'email', ],
-                [ 'title' => 'Nazwa', 'sortable' => true, 'mapped_field' => 'company_name', ],
-                [ 'title' => 'Rola', 'sortable' => true, 'mapped_field' => 'title', ],
-                [ 'title' => 'ERP ID', 'sortable' => true, 'mapped_field' => 'erp', ],
-                [ 'title' => 'Status', 'sortable' => true, 'mapped_field' => 'status', ],
-                [ 'title' => 'Akcje'],
-            ],
+            'data'              => get_table_formatted_data( $list ),
+            'headers'           => get_table_headers(),
         ];
     }
-}
+endif;

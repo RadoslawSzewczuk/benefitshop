@@ -37,8 +37,8 @@ class Menu extends Migration
 //                'type'              => 'INT'
 //            ],
 //            'tab'       => [
-//                'type'              => 'ENUM("Administrator", "Użytkownik")',
-//                'default'           => 'Użytkownik',
+//                'type'              => 'ENUM("Admin", "User")',
+//                'default'           => 'User',
 //                'null' => FALSE
 //            ],
             'active'    => [

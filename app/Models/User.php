@@ -60,10 +60,10 @@ class User extends Model
         $mapper = [
             'id'                => ['table' => 'user', 'field' => 'id'],
             'e-mail'            => ['table' => 'user', 'field' => 'email'],
-            'nazwa'             => ['table' => 'user', 'field' => 'company_name'],
+            'company'           => ['table' => 'user', 'field' => 'company_name'],
             'erp id'            => ['table' => 'user', 'field' => 'erp'],
             'status'            => ['table' => 'user', 'field' => 'status'],
-            'rola'              => ['table' => 'rank', 'field' => 'title'],
+            'role'              => ['table' => 'rank', 'field' => 'title'],
         ];
 
         $this
@@ -81,5 +81,34 @@ class User extends Model
         endif;
 
         return [ $this->paginate(10), $this->pager ];
+    }
+
+    public function get_distributors_for_select( int $page, int $pageSize, string $keyword ): array
+    {
+        $distributors = $this
+            ->select('id, email')
+            ->like('email', $keyword )
+            ->where('rank', DISTRIBUTOR_RANK_ID )
+            ->paginate( $pageSize,'default', $page);
+
+        $count = $this->pager->getPageCount();
+
+        $distributors_prepared = [];
+        if( !empty($distributors) ) :
+
+            $distributors_prepared[] = [ 'id' => 0, 'text' => '' ];
+            foreach( $distributors as $distributor_obj ) :
+                $distributors_prepared[] = array(
+                    'id'=> $distributor_obj['id'],
+                    'text' => $distributor_obj['email'],
+                );
+            endforeach;
+
+        endif;
+
+        return [
+            'result' => $distributors_prepared,
+            'counts' => $count
+        ];
     }
 }

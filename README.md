@@ -1,6 +1,10 @@
-## INSTRUKCJA URUCHOMIENIA
+## Project description
+This is a base for a new projects.
+Here is an example of a benefit shop starter.
 
-Wymagania:
+## How to run
+
+Requirements:
 ``````
 * php 8.1
 * composer
@@ -16,12 +20,12 @@ Wymagania:
         xml (enabled by default - don't turn it off)
 ``````
 
-1. Stwórz w głównym katalogu plik '.env'
+1. Create '.env' file
 ````
 cp env .env
 ````
-2. Uzupełnij w nim dane do bazy
-3. Uruchoom następujące komendy:
+2. Set db credentials
+3. Run following commands:
 ````
 composer update
 ````

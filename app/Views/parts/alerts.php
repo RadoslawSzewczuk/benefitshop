@@ -58,7 +58,7 @@
                 if( 'notification' === key ){
                     notify( msg, 1);
 
-                    return; // equvalent of continue;
+                    return;
                 }
 
                 if( key.includes(".") ){
@@ -73,7 +73,6 @@
                     key += closing_brackets;
                 }
 
-                // ewentualnie switch dla przypadkow od rodzaju pola
                 let $field = $(`[name="${key}"]`);
                 $field.siblings('.form-error-box').text(msg).show();
 

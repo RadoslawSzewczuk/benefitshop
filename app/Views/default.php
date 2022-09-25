@@ -17,17 +17,18 @@
     <?= $this->include('parts/header'); ?>
 
     <!-- Content -->
-    <div class="main-content">
+    <div class="main-content row">
         <?= view('parts/sidebar'); ?>
 
         <!-- Main content -->
-        <section class="content-wrap">
+        <section class="content-wrap col-md-9">
             <?= $this->renderSection('content') ?>
         </section>
 
     </div>
 
     <!-- Modals -->
+    <?= $this->include('auth/change_password_modal') ?>
     <?= $this->renderSection('modals') ?>
 
     <!-- Notifications -->

@@ -29,15 +29,15 @@ class Auth extends BaseController
             'email' => [
                 'rules' => "required|valid_email|is_not_unique[user.email]",
                 'errors' => [
-                    'required' => 'Proszę podać adres e-mail',
-                    'valid_email' => 'Proszę wprowadzić poprawny adres e-mail',
-                    'is_not_unique' => 'Konto o podanym adresie e-mail nie istnieje'
+                    'required' => 'Please enter your e-mail address',
+                    'valid_email' => 'Please enter a valid e-mail address',
+                    'is_not_unique' => 'The account with the given e-mail address does not exist'
                 ]
             ],
             'password'  => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Proszę podać hasło.'
+                    'required' => 'Please enter a password'
                 ]
             ],
         ])) :
@@ -50,20 +50,20 @@ class Auth extends BaseController
 
         $user = ( new User)->where([
             'email'         => $data['email'],
-            'status'        => 'Aktywny',
-//            'deleted_at'    => NULL
+            'status'        => 'Active',
         ])->first();
 
+        // check again because validation may pass but the account might be inactive
         if( !$user )
             return redirect()->to( base_url('login') )
                 ->withInput()
-                ->with('notification_errors', ['email' => 'Konto o podanym adresie nie istnieje']);
+                ->with('notification_errors', ['email' => 'The account with the given address does not exist']);
 
 
         if ( !password_verify( $data['password'], $user['password'] ) ) :
             return redirect()->to(base_url('login'))
                 ->withInput()
-                ->with('notification_errors', ['password' => 'Podane hasło jest niepoprawne']);
+                ->with('notification_errors', ['password' => 'The specified password is incorrect']);
         endif;
 
 
@@ -87,8 +87,8 @@ class Auth extends BaseController
             'email' => [
                 'rules' => "required|valid_email",
                 'errors' => [
-                    'required' => 'Proszę podać adres e-mail',
-                    'valid_email' => 'Proszę wprowadzić poprawny adres e-mail'
+                    'required' => 'Please enter your e-mail address',
+                    'valid_email' => 'lease enter a valid e-mail address'
                 ]
             ]
         ])) :
@@ -100,15 +100,14 @@ class Auth extends BaseController
         $this->send_password_reset_email( $this->request->getPost('email') );
 
         return redirect()->to( base_url('remind_password') )
-            ->with('notification_success', ['notification' => 'Na podany adres e-mail wyślemy link do ustawienia nowego hasła.']);
+            ->with('notification_success', ['notification' => 'We will send a link to set a new password to the e-mail address provided']);
     }
 
     private function send_password_reset_email( $email )
     {
         $user = ( new User)->select('id')->where([
             'email'         => $email,
-            'status'        => 'Aktywny',
-//            'deleted_at'    => NULL
+            'status'        => 'Active',
         ])->first();
 
         if( empty( $user['id'] ) )
@@ -174,17 +173,17 @@ class Auth extends BaseController
                 'password_pass_new' => [
                     'rules' => 'required|min_length[8]|max_length[50]|regex_match[^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,50}$]',
                     'errors' => [
-                        'required' => 'Proszę wypełnić to pole',
-                        'min_length' => 'Podane hasło jest zbyt krótkie',
-                        'max_length' => 'Podane hasło jest zbyt długie',
-                        'regex_match' => 'Hasło musi zawierać conajmniej jedną dużą literę, jedną małą literę, jedną cyfrę oraz znak specjalny'
+                        'required' => 'Please fill in this field',
+                        'min_length' => 'The password provided is too short',
+                        'max_length' => 'The password provided is too long',
+                        'regex_match' => 'The password must contain at least one uppercase letter, one lowercase letter, one number and a special character'
                     ]
                 ],
                 'password_pass_new_r' => [
                     'rules' => 'required|matches[password_pass_new]',
                     'errors' => [
-                        'required' => 'Proszę wypełnić to pole',
-                        'matches' => 'Podane hasła nie pasują do siebie'
+                        'required' => 'Please fill in this field',
+                        'matches' => 'The given passwords do not match'
                     ]
                 ],
             ]
@@ -201,12 +200,12 @@ class Auth extends BaseController
 
         if( empty( $passTokenRow ) )
             return redirect()->to( base_url('remind_password') )
-                ->with('notification_errors', ['notification' => 'Token wygasł. Proszę wygenerować nowy.']);
+                ->with('notification_errors', ['notification' => 'The token has expired. Please generate a new one']);
 
         $minutes_left = Time::now()->difference( Time::parse( $passTokenRow['expiration_date'] ) )->getMinutes();
         if( $minutes_left < 0 )
             return redirect()->to( base_url('remind_password') )
-                ->with('notification_errors', ['notification' => 'Token wygasł. Proszę wygenerować nowy.']);
+                ->with('notification_errors', ['notification' => 'The token has expired. Please generate a new one']);
 
         ( new User)->update( $passTokenRow['id_user'], [
             'password'  => $this->request->getPost('password_pass_new')
@@ -217,7 +216,7 @@ class Auth extends BaseController
         ]);
 
         return redirect()->to( base_url('login') )
-            ->with('notification_success', ['notification' => 'Hasło zostało zmienione.']);
+            ->with('notification_success', ['notification' => 'Password has been changed']);
     }
 
     public function change_password(): bool|string
@@ -229,23 +228,23 @@ class Auth extends BaseController
             'current_password' => [
                 'rules' => 'required',
                 'errors' => [
-                    'required' => 'Proszę podać swoje hasło do konta'
+                    'required' => 'Please enter your account password'
                 ]
             ],
             'new_password'  => [
                 'rules' => 'required|min_length[8]|max_length[50]|regex_match[^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,50}$]',
                 'errors' => [
-                        'required' => 'Proszę wypełnić to pole',
-                        'min_length' => 'Podane hasło jest zbyt krótkie',
-                        'max_length' => 'Podane hasło jest zbyt długie',
-                        'regex_match' => 'Hasło musi zawierać conajmniej jedną dużą literę, jedną małą literę, jedną cyfrę oraz znak specjalny'
+                        'required' => 'Please fill in this field',
+                        'min_length' => 'The password provided is too short',
+                        'max_length' => 'The password provided is too long',
+                        'regex_match' => 'The password must contain at least one uppercase letter, one lowercase letter, one number and a special character'
                 ]
             ],
             'new_password_2'  => [
                 'rules' => 'required|matches[new_password]',
                 'errors' => [
-                    'required' => 'Proszę podać powtórzone hasło.',
-                    'matches' => 'Podane hasła nie pasują do siebie'
+                    'required' => 'Please enter a repeated password',
+                    'matches' => 'The given passwords do not match'
                 ]
             ],
         ]))
@@ -263,7 +262,7 @@ class Auth extends BaseController
         if( !password_verify( $data['current_password'], $user_data['password']) ) :
             return json_encode([
                 'error' => [
-                    'current_password' => 'Błędne hasło do konta'
+                    'current_password' => 'Incorrect password'
                 ]
             ]);
         endif;
@@ -274,11 +273,11 @@ class Auth extends BaseController
 
         return $updated
             ? json_encode([
-                    'notification' => 'Zaktualizowano hasło'
+                    'notification' => 'Password updated'
                 ])
             : json_encode([
                     'error' => true,
-                    'notification' => "Nie udało się zaktualizować hasła, w przypadku dalszych problemów skontaktuj się z administratorem"
+                    'notification' => "The password update failed, in case of further problems contact the administrator"
                 ]);
     }
 }

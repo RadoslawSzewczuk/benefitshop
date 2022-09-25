@@ -25,19 +25,19 @@ use App\Libraries\Breadcrumb;
                         <div class="navbar-items hide-mobile">
                             <ul class="navbar-items-wrap">
                                 <li>
-                                    <a href="#">
+                                    <a href="javascript:void(0);">
                                         <span class="button-icon icon-rocket no-margin"></span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="<?= base_url('change_password') ?>">
-                                        <span class="button-icon icon-settings no-margin"></span>
+                                    <a onclick="$('#accPassChangeModal input').val('');$('#accPassChangeModal').modal('toggle');" href="javascript:void(0);">
+                                        Change password
                                     </a>
                                 </li>
                                 <li class="button-logout">
                                     <a href="<?= base_url('logout') ?>">
                                         <span class="button-icon icon-logout"></span>
-                                        Wyloguj
+                                        Logout
                                     </a>
                                 </li>
                             </ul>

@@ -35,8 +35,8 @@ class User extends Migration
             ],
             'status'     => [
                 'type'              => 'ENUM',
-                'constraint'        => ['Aktywny', 'Nieaktywny'],
-                'default'           => 'Aktywny'
+                'constraint'        => ['Active', 'Inactive'],
+                'default'           => 'Active'
             ],
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp',

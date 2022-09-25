@@ -3,20 +3,20 @@
 <!-- Content -->
 <?= $this->section('content') ?>
 
-    <!-- twoj html -->
+    <!-- your html -->
 
 <?= $this->endSection() ?>
 
 
-<!-- Modale jezeli jakies sa ci potrzebne  -->
+<!-- Modals if necessary  -->
 <?= $this->section('content') ?>
 
-    <!-- twoje modale  -->
+    <!-- your modals  -->
 
 <?= $this->endSection() ?>
 
 
-<!-- Customowe skrypty dla tej zakladki  -->
+<!-- Custom scripts for this page  -->
 <?= $this->section('scripts') ?>
-    <?= $this->include('scripts/templatka'); ?>
+    <?= $this->include('scripts/template'); ?>
 <?= $this->endSection() ?>

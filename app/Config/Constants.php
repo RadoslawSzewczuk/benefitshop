@@ -112,3 +112,4 @@ defined('DISTRIBUTOR_RANK_ID') || define('DISTRIBUTOR_RANK_ID', 4);
  */
 defined('SCRIPT_EXCLUDED_ROUTES') || define('SCRIPT_EXCLUDED_ROUTES', []);
 defined('ADMIN_EMAIL') || define('ADMIN_EMAIL', 'radek.szewczuk@gmail.com');
+defined('SOMETHING_WENT_WRONG') || define('SOMETHING_WENT_WRONG', 'Something went wrong... :<');

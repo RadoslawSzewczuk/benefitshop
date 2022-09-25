@@ -11,7 +11,7 @@ class MenuSeeder extends Seeder
         $data = [
             [
                 'id'            => 1,
-                'title'         => 'Zamówienia',
+                'title'         => 'Orders',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -20,7 +20,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 2,
-                'title'         => 'Użytkownicy',
+                'title'         => 'Users',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -29,7 +29,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 3,
-                'title'         => 'Katalog produktów',
+                'title'         => 'Product catalogue',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -38,7 +38,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 4,
-                'title'         => 'Wyślij e-mail',
+                'title'         => 'Send e-mail',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -47,7 +47,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 5,
-                'title'         => 'Ustawienia',
+                'title'         => 'Settings',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -56,7 +56,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 6,
-                'title'         => 'Importuj portfele',
+                'title'         => 'Import wallets',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -65,7 +65,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 7,
-                'title'         => 'Raporty',
+                'title'         => 'Raports',
                 'icon'          => '',
                 'roles'         => ADMIN_RANK_ID,
                 'logged_only'   => 1,
@@ -75,7 +75,7 @@ class MenuSeeder extends Seeder
 
             [
                 'id'            => 8,
-                'title'         => 'Pulpit',
+                'title'         => 'Desktop',
                 'icon'          => '',
                 'roles'         => SECTOR_MANAGER_RANK_ID . ', ' . REGION_MANAGER_RANK_ID . ', ' . DISTRIBUTOR_RANK_ID,
                 'logged_only'   => 1,
@@ -84,7 +84,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 9,
-                'title'         => 'Produkty',
+                'title'         => 'Products',
                 'icon'          => '',
                 'roles'         => SECTOR_MANAGER_RANK_ID . ', ' . REGION_MANAGER_RANK_ID . ', ' . DISTRIBUTOR_RANK_ID,
                 'logged_only'   => 1,
@@ -93,7 +93,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 10,
-                'title'         => 'Historia zamówień',
+                'title'         => 'Orders history',
                 'icon'          => '',
                 'roles'         => SECTOR_MANAGER_RANK_ID . ', ' . REGION_MANAGER_RANK_ID . ', ' . DISTRIBUTOR_RANK_ID,
                 'logged_only'   => 1,
@@ -102,7 +102,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 11,
-                'title'         => 'Portfel',
+                'title'         => 'Wallet',
                 'icon'          => '',
                 'roles'         => SECTOR_MANAGER_RANK_ID . ', ' . REGION_MANAGER_RANK_ID . ', ' . DISTRIBUTOR_RANK_ID,
                 'logged_only'   => 1,
@@ -111,7 +111,7 @@ class MenuSeeder extends Seeder
             ],
             [
                 'id'            => 12,
-                'title'         => 'Dystrybutorzy',
+                'title'         => 'Distributors',
                 'icon'          => '',
                 'roles'         => SECTOR_MANAGER_RANK_ID . ', ' . REGION_MANAGER_RANK_ID . ', ' . DISTRIBUTOR_RANK_ID,
                 'logged_only'   => 1,

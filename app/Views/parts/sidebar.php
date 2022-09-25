@@ -1,8 +1,8 @@
 <!-- Sidebar -->
-<div class="sidebar-wrap">
+<div class="sidebar-wrap col-md-3">
 
     <div class="separator">
-        <div class="separator-text"><?= isAdmin() ? 'Administrator' : 'Użytkownik' ?></div>
+        <div class="separator-text"><?= isAdmin() ? 'Admin' : 'User' ?></div>
     </div>
 
     <?php if( !empty( $menu_items = get_sidebar_menu() ) ) : ?>

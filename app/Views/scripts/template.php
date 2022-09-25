@@ -1,5 +1,5 @@
 <script>
     $(function(){
-        // console.log("templatka styles");
+        // console.log("template styles");
     });
 </script>

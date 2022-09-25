@@ -1,0 +1,32 @@
+.notify {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 999999;
+    background-color: #24253B;
+    color: #fff;
+}
+
+.notify+.notify {
+    margin-top: 70px;
+}
+
+.notify+.notify+.notify {
+    margin-top: 140px;
+}
+
+.notify p {
+    margin-bottom: 0;
+    padding: 15px 0px;
+    font-size: 20px;
+    line-height: 25px;
+}
+
+.notify.success {
+    background-color: #4CAF50;
+}
+
+.notify.error {
+    background-color: #F71735;
+}

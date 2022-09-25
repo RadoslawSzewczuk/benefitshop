@@ -48,7 +48,6 @@ $routes->get('remind_password', 'Auth::get_remind_password');
 $routes->post('remind_password', 'Auth::remind_password');
 $routes->get('set_new_password', 'Auth::get_set_new_password');
 $routes->post('set_new_password', 'Auth::set_new_password');
-$routes->get('change_password', 'Auth::get_change_password');
 $routes->post('change_password', 'Auth::change_password');
 /*
  * --------------------------------------------------------------------
@@ -64,7 +63,10 @@ $routes->get('/', 'Home::index');
 $routes->group( 'admin', ['filter' => 'isAdmin'], function( $routes ){
     $routes->get('', 'Admin\Orders::index');
     $routes->get('orders', 'Admin\Orders::orders');
+
     $routes->get('users', 'Admin\Users::index');
+    $routes->post('get_distributors_for_select', 'Admin\Users::get_distributors_for_select');
+    $routes->post('add_user', 'Admin\Users::add_user');
 });
 /*
  * --------------------------------------------------------------------
